@@ -1,0 +1,63 @@
+paths:
+  /users:
+    get:
+      summary: Devuelve un arreglo con todos los usuarios que hay
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Usuarios obtenidos satisfactoriamente de la base de datos
+        "500":
+          description: Error al obtener los usuarios de la base de datos
+  
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string #Object ID no es aceptado
+          description: ID autogenerado por MongoDB
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto
+        price:
+          type: number
+          description: Precio del producto
+        thumbnail:
+          type: string
+          description: Imagen/Imágenes del producto
+        stock:
+          type: integer
+          description: Stock remanente del producto
+        category:
+          type: string
+          description: Categoría del producto
+          enum:
+            - Meals
+            - Beverages
+            - Other
+        status:
+          type: boolean
+          description: Status (apertura para venta)
+      
+      example:
+        _id: 661efe77302b9a9cfe1bf749
+        title: Semillas de girasol - Pipas
+        description: Tostadas y saladas
+        price: 1950
+        thumbnail: pipas.jpg
+        stock: 70
+        category: Meals
+        status: true
+        
+        
+
+
+
+
+
+    

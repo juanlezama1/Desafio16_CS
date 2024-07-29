@@ -104,23 +104,15 @@ paths:
 components:
   schemas:
     Cart:
-      type: array
+      type: object
       properties:
         _id:
           type: string #Object ID no es aceptado
           description: ID autogenerado por MongoDB
-        title:
-          type: string
-          description: Título del producto
+        products:
+          type: array
+          description: Arreglo de refererencias a productos y cantidades
       
       example:
-        _id: 661efe77302b9a9cfe1bf749
-        title: Semillas de girasol - Pipas
-        description: Tostadas y saladas
-        price: 1950
-        thumbnail: pipas.jpg
-        stock: 70
-        category: Meals
-        status: true
-        
-        
+        _id: 662435c16fc64657d2c4bf4b
+        products: [{id_prod: 661efe77302b9a9cfe1bf74b, quantity: 5}, {id_prod: 661efe77302b9a9cfe1bf74d, quantity: 2}, {id_prod: 661efe77302b9a9cfe1bf752, quantity: 14}]
