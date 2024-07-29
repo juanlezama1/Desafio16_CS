@@ -9,10 +9,20 @@ paths:
           description: Productos obtenidos satisfactoriamente de la base de datos
         "500":
           description: Error al obtener los productos de la base de datos
+  
+    post:
+      summary: Crea un producto, devuelve una website con el producto creado
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Producto creado con éxito
+        "500":
+          description: Error al crear el producto
 
   /products/{product_id}:
     get:
-      summary: Devuelve una website sólo con el producto específico
+      summary: Devuelve una website sólo con un producto específico
       tags:
         - Products
       parameters:
@@ -33,11 +43,37 @@ paths:
       summary: Update de un producto específico
       tags:
         - Products
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: ID del producto a actualizar
+        schema:
+          $type: string
+
       responses:
         "200":
           description: Producto actualizado con éxito
         "400":
           description: El producto a actualizar con existe
+
+    delete:
+      summary: Delete de un producto específico
+      tags:
+        - Products
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: ID del producto a borrar
+        schema:
+          $type: string
+
+      responses:
+        "200":
+          description: Producto específico eliminado
+        "400":
+          description: El producto a eliminar no existe
 
   /products/pagination:
     get:
@@ -49,6 +85,54 @@ paths:
           description: Productos obtenidos con éxito de la base de datos
         "500":
           description: Error al obtener los productos de la base de datos
+  
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string #Object ID no es aceptado
+          description: ID autogenerado por MongoDB
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto
+        price:
+          type: number
+          description: Precio del producto
+        thumbnail:
+          type: string
+          description: Imagen/Imágenes del producto
+        stock:
+          type: integer
+          description: Stock remanente del producto
+        category:
+          type: string
+          description: Categoría del producto
+          enum:
+            - Meals
+            - Beverages
+            - Other
+        status:
+          type: boolean
+          description: Status (apertura para venta)
+      
+      example:
+        _id: 661efe77302b9a9cfe1bf749
+        title: Semillas de girasol - Pipas
+        description: Tostadas y saladas
+        price: 1950
+        thumbnail: pipas.jpg
+        stock: 70
+        category: Meals
+        status: true
+        
+        
+
+
 
 
 

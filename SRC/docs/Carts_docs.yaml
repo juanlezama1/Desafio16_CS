@@ -1,0 +1,126 @@
+paths:
+
+  /carts/{cart_id}:
+    get:
+      summary: Devuelve una website con el carrito específico
+      tags:
+        - Carts
+      parameters:
+      - name: cart_id
+        in: path
+        required: true
+        description: ID del carrito a consultar
+        schema:
+          $type: string
+
+      responses:
+        "200":
+          description: Carrito específico obtenido satisfactoriamente de la base de dtaos
+        "400":
+          description: El ID enviado no corresponde a un carrito de la DB
+
+    put:
+      summary: Update de un carrito específico
+      tags:
+        - Carts
+      parameters:
+      - name: cart_id
+        in: path
+        required: true
+        description: ID del carrito a actualizar
+        schema:
+          $type: string
+
+      responses:
+        "200":
+          description: Carrito actualizado con éxito
+        "400":
+          description: El carrito a actualizar con existe
+
+    delete:
+      summary: Variado de un carrito específico
+      tags:
+        - Carts
+      parameters:
+      - name: cart_id
+        in: path
+        required: true
+        description: ID del carrito a borrar
+        schema:
+          $type: string
+
+      responses:
+        "200":
+          description: Carrito vaciado con éxito
+        "400":
+          description: El carrito a vaciar no existe en la DB
+
+  /carts/{cart_id}/purchase:
+    get:
+      summary: Finaliza la compra de un carrito específico
+      tags:
+        - Carts
+      parameters:
+      - name: cart_id
+        in: path
+        required: true
+        description: ID del carrito a comprar
+        schema:
+          $type: string
+
+      responses:
+        "201":
+          description: Orden de compra generada con éxito
+        "400":
+          description: Imposible confirmar compra. Stock Insuficiente/Login no activo
+
+  /{cart_id}/products/{product_id}:
+    delete:
+      summary: Elimina un producto específico de un carrito
+      tags:
+        - Carts
+        - Products
+      parameters:
+      - name: cart_id
+        in: path
+        required: true
+        description: ID del carrito a actualizar
+        schema:
+          $type: string
+      
+      - name: product_id
+        in: path
+        required: true
+        description: ID del producto a eliminar del carrito
+        schema:
+          $type: string
+
+    responses:
+      "200":
+        description: Carrito actualizado con éxito
+      "400":
+        description: Carrito/Producto inexistente en base de datos
+
+components:
+  schemas:
+    Cart:
+      type: array
+      properties:
+        _id:
+          type: string #Object ID no es aceptado
+          description: ID autogenerado por MongoDB
+        title:
+          type: string
+          description: Título del producto
+      
+      example:
+        _id: 661efe77302b9a9cfe1bf749
+        title: Semillas de girasol - Pipas
+        description: Tostadas y saladas
+        price: 1950
+        thumbnail: pipas.jpg
+        stock: 70
+        category: Meals
+        status: true
+        
+        
