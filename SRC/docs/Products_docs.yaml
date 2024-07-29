@@ -1,0 +1,55 @@
+paths:
+  /products:
+    get:
+      summary: Devuelve una website con todos los productos
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Productos obtenidos satisfactoriamente de la base de datos
+        "500":
+          description: Error al obtener los productos de la base de datos
+
+  /products/{product_id}:
+    get:
+      summary: Devuelve una website sólo con el producto específico
+      tags:
+        - Products
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: ID del producto a consultar
+        schema:
+          $type: string
+
+      responses:
+        "200":
+          description: Producto específico obtenido satisfactoriamente de la base de dtaos
+        "400":
+          description: El ID enviado no corresponde a un producto de la DB
+
+    put:
+      summary: Update de un producto específico
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Producto actualizado con éxito
+        "400":
+          description: El producto a actualizar con existe
+
+  /products/pagination:
+    get:
+      summary: Devuelve los productos en formato pagination
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Productos obtenidos con éxito de la base de datos
+        "500":
+          description: Error al obtener los productos de la base de datos
+
+
+
+    
