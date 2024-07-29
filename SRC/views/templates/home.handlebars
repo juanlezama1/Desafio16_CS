@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center d-flex flex-row justify-content-end">
+
+            <div class="d-flex flex-column">
+                <div>
+                    {{#if user}}
+                        <h3 style="font-style: italic;">Hola {{user}}</h3>
+                        <button><a href="http://localhost:8080/sessions/current"><h6>VER PERFIL</h6></a></button>
+                    {{else}}
+                            <div>
+                                <h3 style="font-style: italic;">Usuario sin loguear</h3>
+                                <button><a href="http://localhost:8080/sessions/register">REGISTRO</a></button>
+                                <button><a href="http://localhost:8080/sessions/login">LOGIN</a></button>
+                            </div>
+                    {{/if}}
+                </div>
+
+                <div>
+                    {{#if admin_user}}
+                        <h3 style="font-style: italic;">Usuario Admin</h3>
+                    {{/if}}
+
+                    {{#if standard_user}}
+                        <h4 style="font-style: italic;">Usuario Estándar</h4>
+                    {{/if}}
+                </div>
+                
+                <div>
+                    {{#if user}}
+                        <button type="button" class="btn btn-secondary"><a href="http://localhost:8080/sessions/logout">LOGOUT</a></button>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="main_title">
+        <h1>{{title}}</h1>
+    </div>
+
+    <div class="main_subtitle">
+        <h2>{{subtitle}}</h2>
+    </div>
+</div>
+
+{{#each products}}
+
+<div class="card_container">
+    <div class="card" style="width: 18rem;">
+        <img src="{{this.thumbnail}}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">{{this.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${{this.price}}</li>
+            <li class="list-group-item">{{this.stock}} unidades disponibles</li>
+        </ul>
+    </div>
+</div>
+
+{{/each}}

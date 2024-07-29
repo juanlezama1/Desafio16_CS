@@ -1,0 +1,27 @@
+<div>
+    <div class="main_title">
+        <h1>{{title}}</h1>
+    </div>
+
+    <div class="main_subtitle">
+        <h2 style="text-decoration: underline;">{{subtitle}}</h2>
+    </div>
+</div>
+
+{{#each cart}}
+
+<div class="card_container">
+    <div class="card" style="width: 18rem;">
+        <img src="../../public/img/{{this.id_prod.thumbnail}}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{this.id_prod.title}}</h5>
+            <p class="card-text">{{this.id_prod.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${{this.id_prod.price}}</li>
+            <li class="list-group-item">{{this.quantity}} unidad/es en carrito</li>
+        </ul>
+    </div>
+</div>
+
+{{/each}}

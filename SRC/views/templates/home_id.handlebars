@@ -1,0 +1,21 @@
+<div>
+    <div class="main_title">
+        <h1>{{title}}</h1>
+    </div>
+
+    <div class="card_container">
+        <div class="card" style="width: 18rem;">
+            <img src="../../public/img/{{product.thumbnail}}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">${{product.price}}</li>
+                <li class="list-group-item">{{product.stock}} unidades disponibles</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
