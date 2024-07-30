@@ -18,41 +18,41 @@ components:
         _id:
           type: string #Object ID no es aceptado
           description: ID autogenerado por MongoDB
-        title:
+        first_name:
           type: string
-          description: Título del producto
-        description:
+          description: Nombre del usuario
+        last_name:
           type: string
-          description: Descripción del producto
-        price:
+          description: Apellido del usuario
+        age:
           type: number
-          description: Precio del producto
-        thumbnail:
+          description: Edad del usuario
+        email:
           type: string
-          description: Imagen/Imágenes del producto
-        stock:
-          type: integer
-          description: Stock remanente del producto
+          description: Correo electrónico
+        password:
+          type: string
+          description: Contraseña (encriptada)
         category:
           type: string
-          description: Categoría del producto
+          description: Categoría del usuario
           enum:
-            - Meals
-            - Beverages
-            - Other
-        status:
-          type: boolean
-          description: Status (apertura para venta)
+            - Standard_User
+            - Admin
+            - Premium
+        cartID:
+          type: string
+          description: ID correspondiente del carrito asociado al usuario
       
       example:
-        _id: 661efe77302b9a9cfe1bf749
-        title: Semillas de girasol - Pipas
-        description: Tostadas y saladas
-        price: 1950
-        thumbnail: pipas.jpg
-        stock: 70
-        category: Meals
-        status: true
+        _id: 66358669b1fcb1620b8ba1b3
+        first_name: Carmen
+        last_name: Terraza
+        age: 48
+        email: carmenterraza@gmail.com
+        password: $2b$12$9JXzXHPsrwm3U2CJinqITOsdL/CGCbfEq2.GUo1KEQ9R.AE7PB67G
+        category: Admin
+        cartID: 662435c16fc64657d2c4bf4b
         
         
 
